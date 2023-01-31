@@ -12,20 +12,17 @@ const changeturn = ()=>{
 
 let boxes = document.getElementsByClassName("box");
 Array.from(boxes).forEach(element => {
-   let boxtext = document.querySelector('.boxtext');
+   let boxtext = element.querySelector('.boxtext');
    element.addEventListener('click',(e)=>{
     if (boxtext.innerText=== '') {
-        innerText = turn;
-        turn = changeturn();
-        audio_turn.play();
-        checkWin();
-    }else{
-        innerText = turn;
+        boxtext.innerText = turn;
         turn = changeturn();
         audio_turn.play();
         checkWin();
     }
-   }); 
+    if (!isgameover){
+        document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
+    }}); 
 })
 // Winning Logic
 const checkWin = ()=>{
